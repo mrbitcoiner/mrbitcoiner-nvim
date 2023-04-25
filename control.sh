@@ -21,6 +21,7 @@ help_message(){
 }
 
 setup(){
+  check_dependencies
   setup_permissions
   ${C_DIR}/nvim.sh
   printf "Opening nvim in 5 seconds, wait the dependencies install process.\n"
