@@ -8,7 +8,7 @@ readonly C_DIR="$(dirname ${0})"
 ############################
 check_dependencies(){
   for i in "${DEPENDENCIES[@]}"; do
-    if ! which "${i}" > /dev/null; then printf "Please install ${i}" 1>&2; return 1; fi
+    if ! which "${i}" > /dev/null; then printf "Please install ${i}\n" 1>&2; return 1; fi
   done
 }
 
