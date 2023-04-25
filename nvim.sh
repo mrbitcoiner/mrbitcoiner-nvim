@@ -22,17 +22,16 @@ message_disclaimer(){
 rm_if_exists(){
   local path="${1}"
   if [ -z "${path}" ]; then printf "Null path arg" 1>&2; return 1; fi
-  if [ -e "${path}" ]; then sudo rm -r ${path}; fi
+  if [ -e "${path}" ]; then rm -rf ${path}; fi
 }
 
 chown_if_exists(){
   local path="${1}"
   if [ -z "${path}" ]; then printf "Null path arg" 1>&2; return 1; fi
-  if [ -e "${path}" ]; then sudo chown -R ${USER} ${path}; fi
+  if [ -e "${path}" ]; then chown -R ${USER} ${path}; fi
 }
 
 vim_cfg_backup(){
-  printf "May need your sudo password\n"
   chown_if_exists "${NVIM_DIR}"
   chown_if_exists "${NVIM_BKP}"
   chown_if_exists "${NVIM_LOCAL}"

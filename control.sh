@@ -3,7 +3,7 @@
 ############################
 set -e 
 ############################
-readonly DEPENDENCIES=("nvim" "lua" "git" "sudo" "cargo")
+readonly DEPENDENCIES=("nvim" "lua" "git" "cargo")
 readonly C_DIR="$(dirname ${0})"
 ############################
 check_dependencies(){
