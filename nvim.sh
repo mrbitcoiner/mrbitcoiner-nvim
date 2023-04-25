@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Mr Bitcoiner
+# By mrbitcoiner
 ############################
 set -e
 ############################
