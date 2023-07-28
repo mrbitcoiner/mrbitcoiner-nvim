@@ -5,6 +5,7 @@ local plugins = {
       ensure_installed = {
         "rust-analyzer",
       	"lua-language-server",
+        "clangd"
       },
     },
   },
