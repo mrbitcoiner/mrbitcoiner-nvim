@@ -20,5 +20,5 @@ lspconfig.clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"c"},
-  root_dir = util.root_pattern("Makefile")
+  root_dir = util.root_pattern(".clangd")
 })
