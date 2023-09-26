@@ -22,3 +22,9 @@ lspconfig.clangd.setup({
   filetypes = {"c"},
   root_dir = util.root_pattern(".clangd")
 })
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"go"},
+  root_dir = util.root_pattern("go.mod")
+})
