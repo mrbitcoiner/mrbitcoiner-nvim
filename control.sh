@@ -10,6 +10,9 @@ setup(){
 	if [ -e "${NVIM_SHARE_DIR}" ]; then
 		rm -rf "${NVIM_SHARE_DIR}"
 	fi
+	if [ -e "${NVIM_DIR}.bak" ]; then
+		rm -rf "${NVIM_DIR}.bak"
+	fi
 	if [ -e "${NVIM_DIR}" ]; then
 		mv "${NVIM_DIR}" "${NVIM_DIR}.bak"
 	fi
