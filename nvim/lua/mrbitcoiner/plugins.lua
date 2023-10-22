@@ -48,7 +48,8 @@ M.setup = function()
 	})
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local on_attach = function()
-			vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+			vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
+			vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.open_float()<CR>")
 	end
 	lspconfig.gopls.setup {
 		on_attach = on_attach,
