@@ -8,6 +8,7 @@ M.setup = function()
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
+		"joshdick/onedark.vim",
 	}
 	require("lazy").setup(plugins)
 	require("mason").setup()
