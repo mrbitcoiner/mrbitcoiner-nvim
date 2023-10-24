@@ -17,6 +17,8 @@ M.setup = function()
 			"rust_analyzer",
 			"clangd",
 			"lua_ls",
+			"tsserver",
+			"cssls",
 		},
 	})
 
@@ -66,7 +68,11 @@ M.setup = function()
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
-	lspconfig.pylsp.setup {
+	lspconfig.tsserver.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+	lspconfig.cssls.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
