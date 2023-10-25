@@ -51,6 +51,7 @@ M.setup = function()
 	local on_attach = function()
 			vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
 			vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.open_float()<CR>")
+			vim.keymap.set("n", "<leader>ra", ":lua vim.lsp.buf.rename(\"")
 	end
 	lspconfig.gopls.setup {
 		on_attach = on_attach,
