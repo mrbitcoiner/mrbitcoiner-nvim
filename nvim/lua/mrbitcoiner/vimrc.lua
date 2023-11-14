@@ -30,6 +30,8 @@ M.setup = function()
 	vim.keymap.set("n", "<C-h>", "<C-w>h")
 	vim.keymap.set("n", "=", "<C-w>+")
 	vim.keymap.set("n", "-", "<C-w>-")
+	vim.keymap.set("n", "+", "<C-w>>")
+	vim.keymap.set("n", "_", "<C-w><")
 	vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
 	vim.keymap.set("i", "<C-a>", "<C-x><C-o>")
 end
