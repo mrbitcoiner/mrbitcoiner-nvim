@@ -19,6 +19,7 @@ M.setup = function()
 			"lua_ls",
 			"tsserver",
 			"cssls",
+			"html",
 		},
 	})
 
@@ -74,6 +75,10 @@ M.setup = function()
 		capabilities = capabilities,
 	}
 	lspconfig.cssls.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+	lspconfig.html.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
