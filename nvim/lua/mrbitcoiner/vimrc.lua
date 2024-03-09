@@ -15,7 +15,7 @@ M.setup = function()
 	vim.cmd(":set scrolloff=8")
 	vim.cmd(":set showcmd")
 	vim.cmd(":set ruler")
-	vim.cmd(":colorscheme elflord")
+	vim.cmd(":colorscheme habamax")
 
 	vim.keymap.set("n", "<leader>ex", ":Explore<CR>")
 	vim.keymap.set("n", "<leader>cc", ":set colorcolumn=80<CR>")
