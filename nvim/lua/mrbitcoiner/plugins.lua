@@ -20,6 +20,7 @@ M.setup = function()
 			"tsserver",
 			"cssls",
 			"html",
+			"pylsp"
 		},
 	})
 
@@ -79,6 +80,10 @@ M.setup = function()
 		capabilities = capabilities,
 	}
 	lspconfig.html.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+	lspconfig.pylsp.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
