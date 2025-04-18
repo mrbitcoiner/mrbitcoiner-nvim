@@ -1,4 +1,5 @@
 local M = {}
+local vim = vim
 
 M.lazySetup = function()
 	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -23,13 +24,17 @@ M.pluginsSetup = function()
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
+		{
+			'nvim-telescope/telescope.nvim',
+			tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+		},
 	}
 	require("lazy").setup(plugins)
 	require("mason").setup()
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"gopls",
-			"rust_analyzer",
 			"clangd",
 			"lua_ls",
 			"ts_ls",
@@ -42,6 +47,7 @@ M.pluginsSetup = function()
 	local lspconfig = require("lspconfig")
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
+	require("telescope").setup()
 	cmp.setup({
 		snippet = {
 			expand = function(args)
@@ -65,16 +71,18 @@ M.pluginsSetup = function()
 		})
 	})
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local setup_code_action = function ()
+		vim.keymap.set("n", "<leader>ca", function()
+			vim.lsp.buf.code_action()
+		end, {desc = "List Code Actions"})
+	end
 	local on_attach = function()
 			vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
 			vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.open_float()<CR>")
 			vim.keymap.set("n", "<leader>ra", ":lua vim.lsp.buf.rename(\"")
+			setup_code_action()
 	end
 	lspconfig.gopls.setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-	lspconfig.rust_analyzer.setup {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}
@@ -104,6 +112,10 @@ M.pluginsSetup = function()
 	}
 end
 
+M.telescopeRemap = function ()
+	vim.keymap.set("n", "<leader>fd", ":Telescope find_files<CR>")
+end
+
 M.vimRCSetup = function()
 	vim.g.mapleader = " "
 
@@ -123,7 +135,11 @@ M.vimRCSetup = function()
 	vim.cmd(":set colorcolumn=80")
 
 	vim.keymap.set("n", "<leader>ex", ":Explore<CR>")
-	vim.keymap.set("n", "<leader>hs", ":set nowrap<CR> :set sidescroll=1<CR> :set sidescrolloff=8<CR>")
+	vim.keymap.set(
+		"n",
+		"<leader>hs",
+		":set nowrap<CR> :set sidescroll=1<CR> :set sidescrolloff=8<CR>"
+	)
 	vim.keymap.set("n", "<leader>cc", ":set colorcolumn=80<CR>")
 	vim.keymap.set("n", "<leader>ncc", ":set colorcolumn-=80<CR>")
 	vim.keymap.set("n", "<leader>t", ":tabnew<CR>")
@@ -145,3 +161,4 @@ end
 M.lazySetup()
 M.pluginsSetup()
 M.vimRCSetup()
+M.telescopeRemap()
