@@ -27,7 +27,13 @@ M.pluginsSetup = function()
 		{
 			'nvim-telescope/telescope.nvim',
 			tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+      dependencies = { 'nvim-lua/plenary.nvim' },
+		},
+		{
+			"folke/tokyonight.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {},
 		},
 	}
 	require("lazy").setup(plugins)
@@ -77,7 +83,9 @@ M.pluginsSetup = function()
 		end, {desc = "List Code Actions"})
 	end
 	local on_attach = function()
-			vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
+			vim.keymap.set(
+				"n", "<leader>gd", ":sp<CR> :lua vim.lsp.buf.definition()<CR>"
+			)
 			vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.open_float()<CR>")
 			vim.keymap.set("n", "<leader>ra", ":lua vim.lsp.buf.rename(\"")
 			setup_code_action()
@@ -131,7 +139,7 @@ M.vimRCSetup = function()
 	vim.cmd(":set scrolloff=8")
 	vim.cmd(":set showcmd")
 	vim.cmd(":set ruler")
-	vim.cmd(":colorscheme desert")
+	vim.cmd(":colorscheme tokyonight")
 	vim.cmd(":set colorcolumn=80")
 
 	vim.keymap.set("n", "<leader>ex", ":Explore<CR>")
