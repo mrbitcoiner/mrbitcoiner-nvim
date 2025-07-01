@@ -29,12 +29,6 @@ M.pluginsSetup = function()
 			tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' },
 		},
-		{
-			"folke/tokyonight.nvim",
-			lazy = false,
-			priority = 1000,
-			opts = {},
-		},
 	}
 	require("lazy").setup(plugins)
 	require("mason").setup()
@@ -127,7 +121,7 @@ end
 M.vimRCSetup = function()
 	vim.g.mapleader = " "
 
-	vim.cmd(":syntax on")
+	vim.cmd(":syntax off")
 	vim.cmd(":set number")
 	vim.cmd(":set relativenumber")
 	vim.cmd(":set tabstop=2")
@@ -139,7 +133,7 @@ M.vimRCSetup = function()
 	vim.cmd(":set scrolloff=8")
 	vim.cmd(":set showcmd")
 	vim.cmd(":set ruler")
-	vim.cmd(":colorscheme tokyonight")
+	vim.cmd(":colorscheme quiet")
 	vim.cmd(":set colorcolumn=80")
 
 	vim.keymap.set("n", "<leader>ex", ":Explore<CR>")
